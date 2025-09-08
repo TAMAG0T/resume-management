@@ -1,0 +1,47 @@
+{
+	"name": "resume-management",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build --turbopack",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@hookform/resolvers": "^5.2.1",
+		"bcryptjs": "^3.0.2",
+		"docx-parser": "^0.2.1",
+		"formidable": "^3.5.4",
+		"html2canvas": "^1.4.1",
+		"jsonwebtoken": "^9.0.2",
+		"jspdf": "^3.0.2",
+		"lucide-react": "^0.542.0",
+		"mongoose": "^8.18.0",
+		"multer": "^2.0.2",
+		"next": "15.5.2",
+		"next-auth": "^4.24.11",
+		"pdf-parse": "^1.1.1",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
+		"react-hook-form": "^7.62.0",
+		"react-hot-toast": "^2.6.0",
+		"yup": "^1.7.0",
+		"nodemailer": "^6.9.0",
+		"crypto": "^1.0.1",
+		"tailwindcss": "^3.3.0",
+		"autoprefixer": "^10.4.0",
+		"postcss": "^8.4.0"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3",
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"eslint": "^9",
+		"eslint-config-next": "15.5.2",
+		"tailwindcss": "^4",
+		"typescript": "^5"
+	}
+}
