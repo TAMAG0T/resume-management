@@ -10,10 +10,10 @@ export default withAuth(
 			authorized: ({ token, req }) => {
 				// ป้องกันหน้าที่ต้องล็อกอิน
 				const protectedPaths = [
-					// "/dashboard",
-					// "/resumes",
-					// "/profile",
-					// "/settings",
+					"/dashboard",
+					"/resumes",
+					"/profile",
+					"/settings",
 				]
 				const isProtectedPath = protectedPaths.some((path) =>
 					req.nextUrl.pathname.startsWith(path)

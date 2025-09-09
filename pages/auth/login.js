@@ -119,7 +119,7 @@ export default function Login() {
 					<h2 className="text-3xl font-bold text-gray-900 mb-2">
 						เข้าสู่ระบบ
 					</h2>
-					<p className="text-gray-600">
+					<p className="text-write">
 						เข้าสู่ระบบจัดการ Resume ของคุณ
 					</p>
 				</div>
