@@ -407,38 +407,40 @@ export default function Page() {
 
 			{/* ---------------- Experience ---------------- */}
 			<section id="experience" className="py-20 bg-gray-900">
-				<h2 className="text-4xl font-bold mb-12 text-center text-blue-400 fade-in-up">
-					Work Experience
-				</h2>
-				<div className="max-w-4xl mx-auto space-y-8">
-					{[
-						{
-							year: "2021 - Present",
-							title: "Fullstack Developer",
-							desc: "Develop and maintain large-scale websites, lead a team of 5 developers using React, Node.js, and MongoDB technologies",
-						},
-						{
-							year: "2019 - 2021",
-							title: "Frontend Developer",
-							desc: "Developed websites for various business clients using PHP, Laravel, and MySQL technologies",
-						},
-						{
-							year: "2017 - 2019",
-							title: "Backend Developer",
-							desc: "Started career in web development, learned new technologies and developed programming skills",
-						},
-					].map((exp, i) => (
-						<div
-							key={i}
-							className="timeline-item bg-gray-800 p-6 rounded-lg shadow-lg"
-						>
-							<h3 className="text-xl font-semibold text-blue-300">
-								{exp.year}
-							</h3>
-							<h4 className="text-lg font-bold">{exp.title}</h4>
-							<p className="text-gray-300">{exp.desc}</p>
-						</div>
-					))}
+				<div className="container mx-auto px-6 relative z-10">
+					<h2 className="text-4xl font-bold mb-12 text-center text-blue-400 fade-in-up">
+						Work Experience
+					</h2>
+					<div className="max-w-4xl mx-auto space-y-8">
+						{[
+							{
+								year: "2021 - Present",
+								title: "Fullstack Developer",
+								desc: "Develop and maintain large-scale websites, lead a team of 5 developers using React, Node.js, and MongoDB technologies",
+							},
+							{
+								year: "2019 - 2021",
+								title: "Frontend Developer",
+								desc: "Developed websites for various business clients using PHP, Laravel, and MySQL technologies",
+							},
+							{
+								year: "2017 - 2019",
+								title: "Backend Developer",
+								desc: "Started career in web development, learned new technologies and developed programming skills",
+							},
+						].map((exp, i) => (
+							<div
+								key={i}
+								className="timeline-item bg-gray-800 p-6 rounded-lg shadow-lg"
+							>
+								<h3 className="text-xl font-semibold text-blue-300">
+									{exp.year}
+								</h3>
+								<h4 className="text-lg font-bold">{exp.title}</h4>
+								<p className="text-gray-300">{exp.desc}</p>
+							</div>
+						))}
+					</div>
 				</div>
 			</section>
 
