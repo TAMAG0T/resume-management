@@ -1,5 +1,6 @@
 // components/Layout/Layout.js
 import { useState } from "react"
+import { Analytics } from "@vercel/analytics/next"
 import { useSession, signOut } from "next-auth/react"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -19,6 +20,7 @@ export default function Layout({ children }) {
 	]
 
 	return (
+		
 		<div className="min-h-screen bg-gray-50">
 			{/* Mobile sidebar backdrop */}
 			{sidebarOpen && (
