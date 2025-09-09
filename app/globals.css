@@ -135,7 +135,7 @@ body {
 /* ---------- Timeline ---------- */
 .timeline-item { opacity: 0; transform: translateX(-50px); transition: all 0.6s; }
 .timeline-item.animate { opacity: 1; transform: translateX(0); }
-.timeline-item:nth-child(even) { transform: translateX(50px); }
+/* .timeline-item:nth-child(even) { transform: translateX(50px); } */
 
 /* ---------- Glass ---------- */
 .glass {
