@@ -13,6 +13,9 @@ import {
 	faEnvelope,
 	faPhone,
 	faPaperPlane,
+	faDownload,
+	faBars,
+	faUser,
 } from "@fortawesome/free-solid-svg-icons"
 
 import {
@@ -115,7 +118,7 @@ export default function Page() {
 						className="md:hidden text-blue-400"
 						onClick={() => setMenuOpen(!menuOpen)}
 					>
-						<i className="fas fa-bars text-xl"></i>
+						<FontAwesomeIcon icon={faBars} className="text-xl" />
 					</button>
 				</div>
 			</nav>
@@ -189,7 +192,7 @@ export default function Page() {
 								className="pulse-ring w-32 h-32"
 								style={{ animationDelay: "1s" }}
 							></div>
-							<i className="fas fa-user text-5xl text-blue-400 relative z-10"></i>
+							<FontAwesomeIcon icon={faUser} className="text-5xl text-blue-400 relative z-10" />
 						</div>
 					</div>
 					<h1 className="text-5xl md:text-7xl font-bold mb-4 fade-in-up">
@@ -210,15 +213,13 @@ export default function Page() {
 							onClick={() => scrollToSection("contact")}
 							className="modern-btn bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105"
 						>
-							<i className="fas fa-envelope mr-2"></i>
-							Contact
+							<FontAwesomeIcon icon={faEnvelope} className="mr-2" /> Contact
 						</button>
 						<button
 							onClick={downloadCV}
 							className="modern-btn glass hover:bg-white/20 border border-white/30 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105"
 						>
-							<i className="fas fa-download mr-2"></i>
-							Download CV
+							<FontAwesomeIcon icon={faDownload} className="mr-2" /> Download CV
 						</button>
 					</div>
 				</div>
