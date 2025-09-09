@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema(
 				// Password not required for OAuth users
 				return !this.oauthProvider
 			},
-			minlength: 6,
+			minlength: 8,
 		},
 		firstName: {
 			type: String,

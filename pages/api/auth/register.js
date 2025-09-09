@@ -1,8 +1,11 @@
-// pages/api/auth/register.js
 import bcrypt from "bcryptjs"
-import dbConnect from "../../../lib/db"
-import User from "../../../models/User"
-import { validateEmail, validatePassword } from "../../../lib/validation"
+import dbConnect from "@/lib/db"
+import User from "@/models/User"
+import {
+	validateEmail,
+	validatePassword,
+	sanitizeInput,
+} from "@/lib/validation"
 
 export default async function handler(req, res) {
 	if (req.method !== "POST") {
@@ -11,7 +14,6 @@ export default async function handler(req, res) {
 
 	try {
 		await dbConnect()
-
 		const { email, password, firstName, lastName, confirmPassword } =
 			req.body
 
@@ -54,8 +56,8 @@ export default async function handler(req, res) {
 		const user = new User({
 			email: email.toLowerCase(),
 			password: hashedPassword,
-			firstName: firstName.trim(),
-			lastName: lastName.trim(),
+			firstName: sanitizeInput(firstName),
+			lastName: sanitizeInput(lastName),
 			role: "user",
 		})
 

@@ -36,8 +36,6 @@ export default function Login() {
 
 		if (!formData.password) {
 			newErrors.password = "กรุณากรอกรหัสผ่าน"
-		} else if (formData.password.length < 6) {
-			newErrors.password = "รหัสผ่านต้องมีอย่างน้อย 6 ตัวอักษร"
 		}
 
 		setErrors(newErrors)
@@ -208,7 +206,7 @@ export default function Login() {
 									กำลังบันทึก...
 								</div>
 							) : (
-								"รีเซ็ตรหัสผ่าน"
+								"เข้าสู่ระบบ"
 							)}
 						</button>
 					</form>

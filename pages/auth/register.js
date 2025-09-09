@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Eye, EyeOff, Mail, Lock, User, Chrome } from 'lucide-react';
 import { toast } from 'react-hot-toast';
+// import { log } from 'console';
 
 export default function Register() {
 	const [formData, setFormData] = useState({
@@ -74,7 +75,6 @@ export default function Register() {
 		if (!validateForm()) {
 			return;
 		}
-
 		setLoading(true);
 
 		try {
@@ -325,9 +325,50 @@ export default function Register() {
 								</button>
 							</div>
 						</div>
+						<div>
+							<div className="flex items-center">
+								<input
+									id="accept-terms"
+									name="accept-terms"
+									type="checkbox"
+									checked={acceptTerms}
+									onChange={(e) =>
+										setAcceptTerms(e.target.checked)
+									}
+									className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+								/>
+								<label
+									htmlFor="accept-terms"
+									className="ml-2 block text-sm text-gray-700"
+								>
+									ฉันยอมรับ{" "}
+									<Link
+										href="/terms"
+										className="text-blue-600 hover:text-blue-500"
+									>
+										ข้อตกลงการใช้งาน
+									</Link>{" "}
+									และ{" "}
+									<Link
+										href="/privacy"
+										className="text-blue-600 hover:text-blue-500"
+									>
+										นโยบายความเป็นส่วนตัว
+									</Link>
+								</label>
+							</div>
+							{errors.terms && (
+								<p className="mt-2 text-sm text-red-600">
+									{errors.terms}
+								</p>
+							)}
+						</div>
 						<div className="">
-							<button type="submit" className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-								ตกลง
+							<button
+								type="submit"
+								className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+							>
+								บันทึก
 							</button>
 						</div>
 					</form>
