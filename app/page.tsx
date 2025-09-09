@@ -532,6 +532,7 @@ export default function Page() {
 				</div>
 			</section>
 
+
 			{/* ---------------- Footer ---------------- */}
 			<footer className="py-6 bg-gray-900 border-t border-gray-700 text-center text-gray-400">
 				<p>© 2025 Singha Norrajeen. All rights reserved.</p>
