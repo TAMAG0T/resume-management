@@ -20,10 +20,10 @@ const PrivacyPolicy = () => {
         <section style={{ marginBottom: '30px' }}>
           <h2>1. Introduction</h2>
           <p>
-            Welcome to [Your Company/Application Name] ("we", "us", "our"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at [Your Contact Email].
+            We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at [Your Contact Email].
           </p>
           <p>
-            This privacy policy applies to all information collected through our website ([Your Website URL]), and/or any related services, sales, marketing or events (we refer to them collectively in this privacy policy as the "Services").
+            This privacy policy applies to all information collected through our website ([Your Website URL]), and/or any related services, sales, marketing or events (we refer to them collectively in this privacy policy as the Services).
           </p>
         </section>
 
@@ -106,7 +106,7 @@ const PrivacyPolicy = () => {
         <section style={{ marginBottom: '30px' }}>
           <h2>9. Do We Make Updates to This Policy?</h2>
           <p>
-            We may update this privacy policy from time to time. The updated version will be indicated by an updated "Last updated" date and the updated version will be effective as soon as it is accessible. We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.
+            We may update this privacy policy from time to time. The updated version will be indicated by an updated Last updated date and the updated version will be effective as soon as it is accessible. We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.
           </p>
         </section>
 
@@ -116,11 +116,11 @@ const PrivacyPolicy = () => {
             If you have questions or comments about this policy, you may email us at [Your Contact Email] or by post to:
           </p>
           <address>
-            [Your Company Name]<br />
+            {/* [Your Company Name]<br />
             [Your Company Address Line 1]<br />
             [Your Company Address Line 2]<br />
             [City, State/Province, ZIP/Postal Code]<br />
-            [Country]
+            [Country] */}
           </address>
         </section>
       </main>

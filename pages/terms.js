@@ -20,7 +20,7 @@ const TermsOfService = () => {
         <section style={{ marginBottom: '30px' }}>
           <h2>1. Agreement to Terms</h2>
           <p>
-            These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and [Your Company/Application Name] ("we," "us," or "our"), concerning your access to and use of the [Your Website URL] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
+            These Terms of Service constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”) and , concerning your access to and use of the [Your Website URL] website as well as any other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the “Site”).
           </p>
           <p>
             You agree that by accessing the Site, you have read, understood, and agree to be bound by all of these Terms of Service. If you do not agree with all of these Terms of Service, then you are expressly prohibited from using the Site and you must discontinue use immediately.
@@ -103,12 +103,12 @@ const TermsOfService = () => {
             In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at:
           </p>
           <address>
-            [Your Company Name]<br />
+            {/* [Your Company Name]<br />
             [Your Company Address Line 1]<br />
             [Your Company Address Line 2]<br />
             [City, State/Province, ZIP/Postal Code]<br />
             [Country]<br />
-            [Your Contact Email]
+            [Your Contact Email] */}
           </address>
         </section>
       </main>

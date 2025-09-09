@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faCode,
@@ -563,7 +564,7 @@ function ContactItem({
 	label,
 	value,
 }: {
-	icon: any
+	icon: IconDefinition
 	label: string
 	value: string
 }) {
