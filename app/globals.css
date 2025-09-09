@@ -1,26 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------- Global ---------- */
+body { 
+  font-family: 'Kanit', sans-serif; 
+  overflow-x: hidden;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ---------- Gradient Background ---------- */
+.gradient-bg { 
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #1e3a8a 50%, #3b82f6 75%, #60a5fa 100%);
+  position: relative;
+}
+.gradient-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  animation: float 20s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- Card Hover ---------- */
+.card-hover { 
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+.card-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+  transition: left 0.5s;
+}
+.card-hover:hover::before { left: 100%; }
+.card-hover:hover { 
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(59, 130, 246, 0.4);
+}
+
+/* ---------- Typing animation ---------- */
+.typing-animation { 
+  border-right: 3px solid #3b82f6;
+  animation: typing 4s steps(40) infinite, blink 1s infinite, glow 2s ease-in-out infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+@keyframes typing {
+  0%, 100% { width: 0; }
+  50% { width: 100%; }
+}
+@keyframes blink {
+  0%, 50% { border-color: #3b82f6; }
+  51%, 100% { border-color: transparent; }
+}
+@keyframes glow {
+  from { text-shadow: 0 0 5px #3b82f6; }
+  to { text-shadow: 0 0 20px #3b82f6, 0 0 30px #60a5fa; }
+}
+
+/* ---------- Skill Bars ---------- */
+.skill-bar {
+  background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa, #93c5fd);
+  background-size: 200% 100%;
+  animation: fillBar 2s ease-in-out, shimmer 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+.skill-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shine 2s ease-in-out infinite;
+}
+@keyframes fillBar { from { width: 0%; } }
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ---------- Scroll Animations ---------- */
+.fade-in-up { opacity: 0; transform: translateY(50px); transition: all 0.8s; }
+.fade-in-up.animate { opacity: 1; transform: translateY(0); }
+.fade-in-left { opacity: 0; transform: translateX(-50px); transition: all 0.8s; }
+.fade-in-left.animate { opacity: 1; transform: translateX(0); }
+.fade-in-right { opacity: 0; transform: translateX(50px); transition: all 0.8s; }
+.fade-in-right.animate { opacity: 1; transform: translateX(0); }
+.scale-in { opacity: 0; transform: scale(0.8); transition: all 0.8s; }
+.scale-in.animate { opacity: 1; transform: scale(1); }
+
+/* ---------- Buttons ---------- */
+.modern-btn { position: relative; overflow: hidden; transition: all 0.3s ease; }
+.modern-btn::before {
+  content: '';
+  position: absolute; top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+.modern-btn:hover::before { left: 100%; }
+
+/* ---------- Particles ---------- */
+.particles { position: absolute; width: 100%; height: 100%; overflow: hidden; }
+.particle {
+  position: absolute;
+  background: rgba(59, 130, 246, 0.6);
+  border-radius: 50%;
+  animation: particle-float 15s infinite linear;
+}
+@keyframes particle-float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10%, 90% { opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+/* ---------- Timeline ---------- */
+.timeline-item { opacity: 0; transform: translateX(-50px); transition: all 0.6s; }
+.timeline-item.animate { opacity: 1; transform: translateX(0); }
+.timeline-item:nth-child(even) { transform: translateX(50px); }
+
+/* ---------- Glass ---------- */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- Pulse Ring ---------- */
+.pulse-ring {
+  position: absolute;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 50%;
+  animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
