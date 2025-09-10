@@ -140,14 +140,14 @@ export default function Page() {
 								className="hover:text-blue-400 transition-colors"
 							>
 								{s === "home"
-									? "หน้าแรก"
+									? "HOME"
 									: s === "about"
-									? "เกี่ยวกับ"
+									? "ABOUT"
 									: s === "skills"
-									? "ทักษะ"
+									? "SKILLS"
 									: s === "experience"
-									? "ประสบการณ์"
-									: "ติดต่อ"}
+									? "EXPERIENCE"
+									: "CONTACT"}
 							</button>
 						))}
 					</div>
@@ -192,7 +192,10 @@ export default function Page() {
 								className="pulse-ring w-32 h-32"
 								style={{ animationDelay: "1s" }}
 							></div>
-							<FontAwesomeIcon icon={faUser} className="text-5xl text-blue-400 relative z-10" />
+							<FontAwesomeIcon
+								icon={faUser}
+								className="text-5xl text-blue-400 relative z-10"
+							/>
 						</div>
 					</div>
 					<h1 className="text-5xl md:text-7xl font-bold mb-4 fade-in-up">
@@ -204,8 +207,7 @@ export default function Page() {
 						</span>
 					</div>
 					<p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-blue-100 fade-in-up">
-						8+ years of experience in web development and
-						applications, ready to create innovative solutions for
+						8+ years of experience in development, ready to create innovative solutions for
 						your business
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
@@ -213,13 +215,21 @@ export default function Page() {
 							onClick={() => scrollToSection("contact")}
 							className="modern-btn bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105"
 						>
-							<FontAwesomeIcon icon={faEnvelope} className="mr-2" /> Contact
+							<FontAwesomeIcon
+								icon={faEnvelope}
+								className="mr-2"
+							/>{" "}
+							Contact
 						</button>
 						<button
 							onClick={downloadCV}
 							className="modern-btn glass hover:bg-white/20 border border-white/30 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105"
 						>
-							<FontAwesomeIcon icon={faDownload} className="mr-2" /> Download CV
+							<FontAwesomeIcon
+								icon={faDownload}
+								className="mr-2"
+							/>{" "}
+							Download CV
 						</button>
 					</div>
 				</div>
@@ -436,7 +446,9 @@ export default function Page() {
 								<h3 className="text-xl font-semibold text-blue-300">
 									{exp.year}
 								</h3>
-								<h4 className="text-lg font-bold">{exp.title}</h4>
+								<h4 className="text-lg font-bold">
+									{exp.title}
+								</h4>
 								<p className="text-gray-300">{exp.desc}</p>
 							</div>
 						))}
@@ -535,7 +547,6 @@ export default function Page() {
 					</div>
 				</div>
 			</section>
-
 
 			{/* ---------------- Footer ---------------- */}
 			<footer className="py-6 bg-gray-900 border-t border-gray-700 text-center text-gray-400">

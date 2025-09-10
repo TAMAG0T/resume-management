@@ -55,6 +55,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
+  max-width: 300px;
 }
 @keyframes typing {
   0%, 100% { width: 0; }
