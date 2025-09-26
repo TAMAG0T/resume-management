@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client"
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
 	faCode,
 	faBirthdayCake,
@@ -27,24 +27,39 @@ import {
 
 import { useState, useEffect } from "react"
 import Head from "next/head"
+import axios, { AxiosError } from "axios"
 
 export default function Page() {
 	const [menuOpen, setMenuOpen] = useState(false)
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const handleChange = (
+	const [formContact, setFormContact] = useState({
+		name: "",
+		email: "",
+		message: "",
+	})
+	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-		setFormData({ ...formData, [e.target.name]: e.target.value })
-  };
+	) => {
+		setFormContact({ ...formContact, [e.target.name]: e.target.value })
+	}
 
-  const sendMessage = (e: React.FormEvent) => {
+	const sendMessage = async (e: React.FormEvent) => {
 		e.preventDefault()
-		console.log("Form submitted:", formData)
-		// TODO: ส่งข้อมูลไป backend หรือ API
-		alert("ส่งข้อความเรียบร้อย!")
-		setFormData({ name: "", email: "", message: "" })
-  }
+		try{
+			const res = await axios.post("/api/send", {
+				to: process.env.NEXT_PUBLIC_EMAIL_FROM_ADDRESS,
+				from: formContact.email,
+				subject: process.env.NEXT_PUBLIC_EMAIL_FROM_NAME + " ติดต่อโดยคุณ " + formContact.name,
+				message: formContact.message,
+			})
+			console.log("Success:", res.data)
+		} catch(err){
+			const error = err as AxiosError
+			console.error("Error:", error.response?.data || error.message)
+		}
+		
+		// setFormContact({ name: "", email: "", message: "" })
 
+	}
 
 	useEffect(() => {
 		const observers: IntersectionObserver[] = []
@@ -71,7 +86,10 @@ export default function Page() {
 	}
 
 	const downloadCV = () => {
-		alert("ดาวน์โหลด CV (คุณสามารถเปลี่ยนเป็นลิงก์ไฟล์จริงได้)")
+		const link = document.createElement("a")
+		link.href = "/resume/resume_2025.pdf" // ไฟล์อยู่ใน public/files/
+		link.download = "resume_2025.pdf"
+		link.click()
 	}
 
 	return (
@@ -95,6 +113,7 @@ export default function Page() {
 							"about",
 							"skills",
 							"experience",
+							"project",
 							"contact",
 						].map((s) => (
 							<button
@@ -108,6 +127,8 @@ export default function Page() {
 									? "About"
 									: s === "skills"
 									? "Skills"
+									: s === "project"
+									? "Project"
 									: s === "experience"
 									? "Experience"
 									: "Contact"}
@@ -207,8 +228,8 @@ export default function Page() {
 						</span>
 					</div>
 					<p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto text-blue-100 fade-in-up">
-						8+ years of experience in development, ready to create innovative solutions for
-						your business
+						8+ Years of Software Development Experience – Ready to
+						Build Innovative Solutions for Your Business.
 					</p>
 					<div className="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
 						<button
@@ -224,6 +245,7 @@ export default function Page() {
 						<button
 							onClick={downloadCV}
 							className="modern-btn glass hover:bg-white/20 border border-white/30 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105"
+							id="download-cv"
 						>
 							<FontAwesomeIcon
 								icon={faDownload}
@@ -424,19 +446,24 @@ export default function Page() {
 					<div className="max-w-4xl mx-auto space-y-8">
 						{[
 							{
-								year: "2021 - Present",
-								title: "Fullstack Developer",
-								desc: "Develop and maintain large-scale websites, lead a team of 5 developers using React, Node.js, and MongoDB technologies",
+								year: "2019 - Present",
+								title: "Senior Developer",
+								desc: "Responsible for analyzing and designing project structures and components, introducing new technologies to meet business requirements, and providing ideas and work plans to support the team’s success.",
 							},
 							{
-								year: "2019 - 2021",
-								title: "Frontend Developer",
-								desc: "Developed websites for various business clients using PHP, Laravel, and MySQL technologies",
+								year: "2018 - 2019",
+								title: "Web Developer",
+								desc: "Responsible for designing database architectures and improving the company’s website to ensure mobile responsiveness and cross-platform usability, enhancing overall accessibility and user experience.",
 							},
 							{
-								year: "2017 - 2019",
-								title: "Backend Developer",
-								desc: "Started career in web development, learned new technologies and developed programming skills",
+								year: "2017 - 2018",
+								title: "Developer",
+								desc: "Responsible for developing and enhancing the company’s CRM system, improving overall performance, usability, and alignment with business requirements.",
+							},
+							{
+								year: "2015 - 2017",
+								title: "Programmer",
+								desc: "Responsible for developing web applications with designated frameworks, with a primary focus on backend functionality. Assisted in database structure design and implemented features for generating official government document forms in PDF format.",
 							},
 						].map((exp, i) => (
 							<div
@@ -480,7 +507,7 @@ export default function Page() {
 							<ContactItem
 								icon={faEnvelope}
 								label="Email"
-								value="pangpang9876@gmail.com"
+								value="singha.norr@gmail.com"
 							/>
 							<ContactItem
 								icon={faPhone}
@@ -490,7 +517,7 @@ export default function Page() {
 							<ContactItem
 								icon={faLinkedin}
 								label="LinkedIn"
-								value="linkedin.com/in/num-singha-724664258"
+								value="linkedin.com/in/num-singha"
 							/>
 							<ContactItem
 								icon={faGithub}
@@ -510,7 +537,7 @@ export default function Page() {
 									name="name"
 									placeholder="Name"
 									required
-									value={formData.name}
+									value={formContact.name}
 									onChange={handleChange}
 									className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
 								/>
@@ -519,7 +546,7 @@ export default function Page() {
 									name="email"
 									placeholder="Email"
 									required
-									value={formData.email}
+									value={formContact.email}
 									onChange={handleChange}
 									className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
 								/>
@@ -528,7 +555,7 @@ export default function Page() {
 									placeholder="Message"
 									rows={5}
 									required
-									value={formData.message}
+									value={formContact.message}
 									onChange={handleChange}
 									className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none"
 								></textarea>
@@ -540,7 +567,7 @@ export default function Page() {
 										icon={faPaperPlane}
 										className="mr-2"
 									/>{" "}
-									ส่งข้อความ
+									Send Mail
 								</button>
 							</form>
 						</div>
