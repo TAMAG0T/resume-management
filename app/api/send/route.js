@@ -3,9 +3,7 @@ import nodemailer from "nodemailer"
 export async function POST(req) {
 	const { to, from, subject, message } = await req.json()
 	// ตั้งค่า transporter
-    return new Response(JSON.stringify({ to, from, subject, message }), {
-		status: 200,
-	})
+    
 	const transporter = nodemailer.createTransport({
 		host: process.env.EMAIL_HOST,
 		port: Number(process.env.EMAIL_PORT),
