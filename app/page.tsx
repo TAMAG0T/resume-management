@@ -48,16 +48,21 @@ export default function Page() {
 			const res = await axios.post("/api/send", {
 				to: process.env.NEXT_PUBLIC_EMAIL_FROM_ADDRESS,
 				from: formContact.email,
-				subject: process.env.NEXT_PUBLIC_EMAIL_FROM_NAME + " ติดต่อโดยคุณ " + formContact.name,
+				subject:
+					process.env.NEXT_PUBLIC_EMAIL_FROM_NAME +
+					" ติดต่อโดยคุณ " +
+					formContact.name,
 				message: formContact.message,
 			})
 			console.log("Success:", res.data)
+			alert("ส่งข้อความสำเร็จแล้ว");
+			setFormContact({ name: "", email: "", message: "" })
 		} catch(err){
 			const error = err as AxiosError
 			console.error("Error:", error.response?.data || error.message)
 		}
 		
-		// setFormContact({ name: "", email: "", message: "" })
+		
 
 	}
 
